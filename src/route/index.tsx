@@ -2,6 +2,7 @@ import { RouteObject, useRoutes, useNavigate } from "react-router";
 import Home from "../pages/Home";
 import LinePage from "../pages/Line";
 
+// 这其实是个layout
 const routeList: RouteObject[] = [
   {
     path: '/',
