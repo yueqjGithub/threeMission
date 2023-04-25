@@ -23,7 +23,7 @@ const PageLayout = () => {
         </ul>
       </div>
       <div className={`${styles.contentContainer} flex-1 full-height`}>
-        <div className={styles.contentOutlet}>
+        <div className={`${styles.contentOutlet} full-height scroll-bar`}>
         <Outlet></Outlet>
         </div>
       </div>

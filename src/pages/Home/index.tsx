@@ -2,10 +2,10 @@ import { useEffect, useRef } from 'react';
 import { BoxGeometry, Mesh, MeshBasicMaterial, PerspectiveCamera, Scene, WebGLRenderer } from 'three';
 const Home = () => {
   const ref = useRef<HTMLDivElement>(null)
-  
+  const effectRef = useRef<boolean>(false)
 
   useEffect(() => {
-    if (ref.current) {
+    if (ref.current && !effectRef.current) {
       const scene = new Scene()
       const w = ref.current.clientWidth
       const h = ref.current.clientHeight
@@ -26,8 +26,8 @@ const Home = () => {
         cube.rotation.y += 0.01;
         render.render( scene, camera );
       }
-      debugger
       ref.current.appendChild(render.domElement)
+      effectRef.current = true
       animate()
     }
   }, [])

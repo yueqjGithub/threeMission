@@ -2,9 +2,9 @@ import { useEffect, useRef } from "react"
 import * as THREE from 'three'
 const LinePage = () => {
   const ref = useRef<HTMLDivElement>(null)
-  
+  const effectRef = useRef<boolean>(false)
   useEffect(() => {
-    if (ref.current) {
+    if (ref.current && !effectRef.current) {
       const renderer = new THREE.WebGLRenderer();
       const w = ref.current.clientWidth
       const h = ref.current.clientHeight
@@ -17,6 +17,7 @@ const LinePage = () => {
 
       const scene = new THREE.Scene();
       ref.current?.appendChild( renderer.domElement );
+      effectRef.current = true
       //create a blue LineBasicMaterial
       const material = new THREE.LineBasicMaterial( { color: 0x0000ff } );
       const points = [];
