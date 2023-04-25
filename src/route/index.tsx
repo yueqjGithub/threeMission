@@ -1,9 +1,14 @@
 import { RouteObject, useRoutes, useNavigate } from "react-router";
-import Home from "../pages/Home";
-import LinePage from "../pages/Line";
+
 import LoginPage from "../pages/Login";
 import PageLayout from "../layout/pageLayout";
-import Basic from "../pages/Basic";
+import { lazy } from "react";
+import LazyImportComponent from "../components/LazyImportComponent";
+
+const Home = lazy(() => import('../pages/Home'))
+const LinePage = lazy(() => import('../pages/Line'))
+const Basic = lazy(() => import('../pages/Basic'))
+
 const routeList: RouteObject[] = [
   {
     path: '/login',
@@ -15,15 +20,15 @@ const routeList: RouteObject[] = [
     children: [
       {
         path: 'home',
-        element: <Home />,
+        element: <LazyImportComponent lazyChildren={Home} />,
       },
       {
         path: 'line',
-        element: <LinePage />
+        element: <LazyImportComponent lazyChildren={LinePage} />,
       },
       {
         path: 'basic',
-        element: <Basic></Basic>
+        element: <LazyImportComponent lazyChildren={Basic} />,
       },
       {
         index: true,
