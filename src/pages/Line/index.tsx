@@ -6,10 +6,12 @@ const LinePage = () => {
   useEffect(() => {
     if (ref.current) {
       const renderer = new THREE.WebGLRenderer();
-      renderer.setSize( window.innerWidth, window.innerHeight );
+      const w = ref.current.clientWidth
+      const h = ref.current.clientHeight
+      renderer.setSize( w, h );
       
 
-      const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+      const camera = new THREE.PerspectiveCamera( 45, w / h, 1, 500 );
       camera.position.set( 0, 0, 100 );
       camera.lookAt( 0, 0, 0 );
 
@@ -30,7 +32,7 @@ const LinePage = () => {
     }
   }, [ref])
   return (
-    <div ref={ref}></div>
+    <div ref={ref} className="full-width full-height"></div>
   )
 }
 

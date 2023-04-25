@@ -1,38 +1,46 @@
 import { RouteObject, useRoutes, useNavigate } from "react-router";
 import Home from "../pages/Home";
 import LinePage from "../pages/Line";
-
-// 这其实是个layout
+import LoginPage from "../pages/Login";
+import PageLayout from "../layout/pageLayout";
+import Basic from "../pages/Basic";
 const routeList: RouteObject[] = [
   {
-    path: '/',
-    element: <Home />,
+    path: '/login',
+    element: <LoginPage />
   },
   {
-    path: '/line',
-    element: <LinePage></LinePage>
+    path: '/',
+    element: <PageLayout></PageLayout>,
+    children: [
+      {
+        path: 'home',
+        element: <Home />,
+      },
+      {
+        path: 'line',
+        element: <LinePage />
+      },
+      {
+        path: 'basic',
+        element: <Basic></Basic>
+      },
+      {
+        index: true,
+        element: <>THIS IS DEFAULT CONTENT</>
+      }
+    ]
+  },
+  {
+    path: '*',
+    element: <>THIS IS 404 PAGE</>
   }
 ]
 
+
 const RouteWarpper = () => {
   const Wrapper = useRoutes(routeList)
-  const navigate = useNavigate()
-  const to = (path: string) => {
-    navigate(path)
-  }
-  return (
-    <>
-      <div className="pageContainer flex-row flex-jst-start flex-ali-start">
-        <div className="menu">
-          <ul>
-            <li onClick={() => to('/')}>home</li>
-            <li onClick={() => to('/line')}>line</li>
-          </ul>
-        </div>
-        <div className="flex-1">{Wrapper}</div>
-      </div>
-    </>
-  )
+  return Wrapper
 }
 
 export default RouteWarpper
