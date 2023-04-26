@@ -8,7 +8,7 @@ const BasicPage = () => {
     if (!effectRef.current) {
       const scene = new THREE.Scene()
       const geometry = new THREE.BoxGeometry(100, 100, 100)
-      // const cylinder = new THREE.CylinderGeometry(50, 50, 100, 32)
+      const cylinder = new THREE.CylinderGeometry(50, 50, 100, 32)
       // const sphere = new THREE.SphereGeometry(50, 32, 32)
       // const cone = new THREE.ConeGeometry(50, 100, 32)
       // const plane = new THREE.PlaneGeometry(100, 100, 32)
@@ -20,19 +20,19 @@ const BasicPage = () => {
         transparent: true,
         opacity: 0.5,
       })
-      // const material1 = new THREE.MeshLambertMaterial({ color: 0x00ff00 })
+      const material1 = new THREE.MeshBasicMaterial({ color: 0x0000ff })
       // const material2 = new THREE.MeshPhongMaterial({ color: 0x00ff00 })
       // const material3 = new THREE.MeshStandardMaterial({ color: 0x00ff00 })
       // const material4 = new THREE.MeshPhysicalMaterial({ color: 0x00ff00 })
       // 网格模型
       const mesh = new THREE.Mesh(geometry, material)
-      // const cylinderMesh = new THREE.Mesh(cylinder, material1)
+      const cylinderMesh = new THREE.Mesh(cylinder, material1)
       // const sphereMesh = new THREE.Mesh(sphere, material2)
       // const coneMesh = new THREE.Mesh(cone, material3)
       // const planeMesh = new THREE.Mesh(plane, material4)
       // const circleMesh = new THREE.Mesh(circle, material4)
       mesh.position.set(0, 0, 0)
-      // cylinderMesh.position.set(50, 0, 0)
+      cylinderMesh.position.set(150, 0, 0)
       // sphereMesh.position.set(100, 0, 0)
       // coneMesh.position.set(150, 0, 0)
       // planeMesh.position.set(200, 0, 0)
@@ -40,7 +40,7 @@ const BasicPage = () => {
 
       // 添加进场景
       scene.add(mesh)
-      // scene.add(cylinderMesh)
+      scene.add(cylinderMesh)
       // scene.add(sphereMesh)
       // scene.add(coneMesh)
       // scene.add(planeMesh)
@@ -67,6 +67,7 @@ const BasicPage = () => {
         requestAnimationFrame(animate)
         // camera.position.x += 1 // 动相机
         mesh.rotation.z += 0.01 // 转动物体
+        cylinderMesh.rotation.x += 0.01
         // mesh.rotation.y += 0.1 // 转动物体z
         // mesh.position.z += 0.1 // 移动物体
         render.render(scene, camera)
