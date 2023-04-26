@@ -50,7 +50,7 @@ const BasicPage = () => {
       const w = ref.current?.clientWidth || 0
       const h = ref.current?.clientHeight || 0
       const camera = new THREE.PerspectiveCamera(45, w / h, 1, 1000)
-      camera.position.set(0, 700, 0)
+      camera.position.set(0, 0, 700)
       camera.lookAt(0, 0, 0)
 
       // 渲染器
@@ -66,11 +66,12 @@ const BasicPage = () => {
       const animate = () => {
         requestAnimationFrame(animate)
         // camera.position.x += 1 // 动相机
-        mesh.rotation.z += 0.01 // 转动物体
+        mesh.rotation.y += 0.01 // 转动物体
         // mesh.rotation.y += 0.1 // 转动物体z
-        // mesh.position.y += 0.1 // 移动物体
+        // mesh.position.z += 0.1 // 移动物体
         render.render(scene, camera)
       }
+      render.render(scene, camera)
       ref.current?.appendChild(render.domElement)
       animate()
       effectRef.current = true
