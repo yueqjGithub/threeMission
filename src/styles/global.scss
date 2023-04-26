@@ -7,6 +7,26 @@
 }
 :root {
   --color-primary: #1890ff;
+  --color-warning: #faad14;
+  --color-error: #f5222d;
+}
+.text-primary {
+  color: var(--color-primary);
+}
+.text-warning {
+  color: var(--color-warning);
+}
+.text-error {
+  color: var(--color-error);
+}
+.bg-primary {
+  background-color: var(--color-primary);
+}
+.bg-warning {
+  background-color: var(--color-warning);
+}
+.bg-error {
+  background-color: var(--color-error);
 }
 html {
   font-size: 625%;

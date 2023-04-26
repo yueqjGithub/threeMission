@@ -32,7 +32,9 @@ const routeList: RouteObject[] = [
       },
       {
         index: true,
-        element: <>THIS IS DEFAULT CONTENT</>
+        element: <div onClick={() => {
+          document.documentElement.style.setProperty('--color-primary', 'red')
+        }}>THIS IS DEFAULT CONTENT</div>
       }
     ]
   },
