@@ -50,8 +50,8 @@ const BasicPage = () => {
       const w = ref.current?.clientWidth || 0
       const h = ref.current?.clientHeight || 0
       const camera = new THREE.PerspectiveCamera(45, w / h, 1, 1000)
-      camera.position.set(0, 0, 700)
-      camera.lookAt(0, 0, 0)
+      camera.position.set(150, 0, 500)
+      camera.lookAt(150, 0, 0)
 
       // 渲染器
       const render = new THREE.WebGLRenderer()
@@ -60,13 +60,13 @@ const BasicPage = () => {
       // render.render(scene, camera)
 
       // 坐标系
-      const axesHelper = new THREE.AxesHelper(150);
+      const axesHelper = new THREE.AxesHelper(250);
       scene.add(axesHelper);
 
       const animate = () => {
         requestAnimationFrame(animate)
         // camera.position.x += 1 // 动相机
-        mesh.rotation.y += 0.01 // 转动物体
+        mesh.rotation.z += 0.01 // 转动物体
         // mesh.rotation.y += 0.1 // 转动物体z
         // mesh.position.z += 0.1 // 移动物体
         render.render(scene, camera)
