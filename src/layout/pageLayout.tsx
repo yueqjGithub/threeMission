@@ -20,6 +20,7 @@ const PageLayout = () => {
           <li><Link className="text-primary" to={'/home'}>HOME</Link></li>
           <li><Link className="text-primary" to={'/line'}>LINE</Link></li>
           <li><Link className="text-primary" to={'/basic'}>BASIC</Link></li>
+          <li><Link className="text-primary" to={'/light'}>Light</Link></li>
         </ul>
       </div>
       <div className={`${styles.contentContainer} flex-1 full-height`}>

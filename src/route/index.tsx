@@ -8,7 +8,7 @@ import LazyImportComponent from "../components/LazyImportComponent";
 const Home = lazy(() => import('../pages/Home'))
 const LinePage = lazy(() => import('../pages/Line'))
 const Basic = lazy(() => import('../pages/Basic'))
-
+const Light = lazy(() => import('../pages/Light'))
 const routeList: RouteObject[] = [
   {
     path: '/login',
@@ -29,6 +29,10 @@ const routeList: RouteObject[] = [
       {
         path: 'basic',
         element: <LazyImportComponent lazyChildren={Basic} />,
+      },
+      {
+        path: 'light',
+        element: <LazyImportComponent lazyChildren={Light}/>,
       },
       {
         index: true,
