@@ -9,6 +9,8 @@ const Home = lazy(() => import('../pages/Home'))
 const LinePage = lazy(() => import('../pages/Line'))
 const Basic = lazy(() => import('../pages/Basic'))
 const Light = lazy(() => import('../pages/Light'))
+const Orbit = lazy(() => import('../pages/Orbit'))
+const Stat = lazy(() => import('../pages/Stat'))
 const routeList: RouteObject[] = [
   {
     path: '/login',
@@ -33,6 +35,14 @@ const routeList: RouteObject[] = [
       {
         path: 'light',
         element: <LazyImportComponent lazyChildren={Light}/>,
+      },
+      {
+        path: 'orbit',
+        element: <LazyImportComponent lazyChildren={Orbit}/>,
+      },
+      {
+        path: 'stat',
+        element: <LazyImportComponent lazyChildren={Stat}/>,
       },
       {
         index: true,

@@ -20,7 +20,9 @@ const PageLayout = () => {
           <li><Link className="text-primary" to={'/home'}>HOME</Link></li>
           <li><Link className="text-primary" to={'/line'}>LINE</Link></li>
           <li><Link className="text-primary" to={'/basic'}>BASIC</Link></li>
-          <li><Link className="text-primary" to={'/light'}>Light</Link></li>
+          <li><Link className="text-primary" to={'/light'}>Light（光和漫反射材质）</Link></li>
+          <li><Link className="text-primary" to={'/orbit'}>Orbit（各种辅助控件）</Link></li>
+          <li><Link className="text-primary" to={'/stat'}>stat（渲染帧率查看）</Link></li>
         </ul>
       </div>
       <div className={`${styles.contentContainer} flex-1 full-height`}>
