@@ -1,3 +1,5 @@
+## 感谢大哥的文档
+http://www.webgl3d.cn/
 ## AxesHelper
 坐标系辅助对象，用于显示坐标系的方向和大小。
 ```javascript
