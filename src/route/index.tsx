@@ -11,6 +11,7 @@ const Basic = lazy(() => import('../pages/Basic'))
 const Light = lazy(() => import('../pages/Light'))
 const Orbit = lazy(() => import('../pages/Orbit'))
 const Stat = lazy(() => import('../pages/Stat'))
+const GuiPage = lazy(() => import('../pages/GuiPage'))
 const routeList: RouteObject[] = [
   {
     path: '/login',
@@ -43,6 +44,10 @@ const routeList: RouteObject[] = [
       {
         path: 'stat',
         element: <LazyImportComponent lazyChildren={Stat}/>,
+      },
+      {
+        path: 'gui',
+        element: <LazyImportComponent lazyChildren={GuiPage}/>,
       },
       {
         index: true,

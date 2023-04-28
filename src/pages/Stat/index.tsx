@@ -17,8 +17,13 @@ const statPage = () => {
       const camera = new THREE.PerspectiveCamera(45, w / h, 1, 2000)
       camera.position.set(300, 200,1700)
       camera.lookAt(0,0,0)
-      const render = new THREE.WebGLRenderer()
+      const render = new THREE.WebGLRenderer({
+        // 抗锯齿
+        antialias: true
+      })
+      render.setPixelRatio(window.devicePixelRatio)
       render.setSize(w, h)
+      render.setClearColor(0x004444, 1.0)
 
       const geometry = new THREE.BoxGeometry(50, 50, 50)
       const material = new THREE.MeshLambertMaterial()
@@ -31,12 +36,12 @@ const statPage = () => {
       const mesh = new THREE.Mesh(geometry, material)
       sence.add(mesh)
       // 点光源
-      const pointLight = new THREE.PointLight(0xffffff, 1)
+      const pointLight = new THREE.PointLight(0xffffff, 0.7)
       pointLight.position.set(100, 200, 0)
       sence.add(pointLight)
 
       // 环境光
-      const ambientLight = new THREE.AmbientLight(0xffff00, 0.1)
+      const ambientLight = new THREE.AmbientLight(0x004444, 0.5)
       sence.add(ambientLight)
 
       statObj.current = Stats()
