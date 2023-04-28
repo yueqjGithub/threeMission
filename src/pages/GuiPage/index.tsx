@@ -25,7 +25,9 @@ const GuiPage = () => {
       // render.setClearColor(0x004444, 1.0)
 
       const geometry = new THREE.BoxGeometry(50, 50, 50)
-      const material = new THREE.MeshPhongMaterial()
+      const material = new THREE.MeshPhongMaterial({
+        color: 0xffffff
+      })
       // 解开注释，可看到fps显著下降，机子好当我没说
       // for (let k = 0; k < 500000; k++) {
       //   const mesh = new THREE.Mesh(geometry, material)
@@ -61,13 +63,14 @@ const GuiPage = () => {
         y: 0,
         z: 0,
         ambientLight: 0.5,
-        pointLight: 1
+        pointLight: 1,
+        color: '#ffffff'
       }
-      gui.add(obj, 'x', -500, 500).onChange((v) => {
+      gui.add(obj, 'x', -200, 200).onChange((v) => {
         mesh.position.x = v
         render.render(sence, camera)
       })
-      gui.add(obj, 'y', -500, 500).onChange((v) => {
+      gui.add(obj, 'y', -200, 200).onChange((v) => {
         mesh.position.y = v
         render.render(sence, camera)
       })
@@ -78,11 +81,15 @@ const GuiPage = () => {
       gui.add(obj, 'ambientLight', 0, 1).onChange((v) => {
         ambientLight.intensity = v
         render.render(sence, camera)
-      })
+      }).name('环境光强度')
       gui.add(obj, 'pointLight', 0, 1).onChange((v) => {
         pointLight.intensity = v
         render.render(sence, camera)
-      })
+      }).name('点光源强度')
+      gui.addColor(obj, 'color').onChange(function(value){
+        mesh.material.color.set(value);
+        render.render(sence, camera)
+      }).name('材质颜色');
 
       const animate = () => {
         statObj.current.update()
