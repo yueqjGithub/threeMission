@@ -78,15 +78,30 @@ const GuiPage = () => {
         mesh.position.z = v
         render.render(sence, camera)
       })
-      gui.add(obj, 'ambientLight', 0, 1).onChange((v) => {
+      // gui.add(obj, 'ambientLight', 0, 1).onChange((v) => {
+      //   ambientLight.intensity = v
+      //   render.render(sence, camera)
+      // }).name('环境光强度')
+      // gui.add(obj, 'pointLight', 0, 1).onChange((v) => {
+      //   pointLight.intensity = v
+      //   render.render(sence, camera)
+      // }).name('点光源强度')
+      // gui.addColor(obj, 'color').onChange(function(value){
+      //   mesh.material.color.set(value);
+      //   render.render(sence, camera)
+      // }).name('材质颜色');
+
+      // GUI子菜单
+      const power = gui.addFolder('光&材质')
+      power.add(obj, 'ambientLight', 0, 1).onChange((v) => {
         ambientLight.intensity = v
         render.render(sence, camera)
       }).name('环境光强度')
-      gui.add(obj, 'pointLight', 0, 1).onChange((v) => {
+      power.add(obj, 'pointLight', 0, 1).onChange((v) => {
         pointLight.intensity = v
         render.render(sence, camera)
       }).name('点光源强度')
-      gui.addColor(obj, 'color').onChange(function(value){
+      power.addColor(obj, 'color').onChange(function(value){
         mesh.material.color.set(value);
         render.render(sence, camera)
       }).name('材质颜色');

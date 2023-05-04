@@ -2,7 +2,7 @@ import { RouteObject, useRoutes, useNavigate } from "react-router";
 
 import LoginPage from "../pages/Login";
 import PageLayout from "../layout/pageLayout";
-import { lazy } from "react";
+import { lazy, useEffect } from "react";
 import LazyImportComponent from "../components/LazyImportComponent";
 
 const Home = lazy(() => import('../pages/Home'))
@@ -12,6 +12,18 @@ const Light = lazy(() => import('../pages/Light'))
 const Orbit = lazy(() => import('../pages/Orbit'))
 const Stat = lazy(() => import('../pages/Stat'))
 const GuiPage = lazy(() => import('../pages/GuiPage'))
+const VerticesPage = lazy(() => import('../pages/Vertices'))
+
+const RedirectComponent = (props: { to: string }) => {
+  const navigate = useNavigate()
+  useEffect(() => {
+    navigate(props.to, {
+      replace: true
+    })
+  }, [])
+  return null
+}
+
 const routeList: RouteObject[] = [
   {
     path: '/login',
@@ -51,9 +63,20 @@ const routeList: RouteObject[] = [
       },
       {
         index: true,
-        element: <div onClick={() => {
-          document.documentElement.style.setProperty('--color-primary', 'red')
-        }}>THIS IS DEFAULT CONTENT</div>
+        // element: <div onClick={() => {
+        //   document.documentElement.style.setProperty('--color-primary', 'red')
+        // }}>THIS IS DEFAULT CONTENT</div>
+        element: <RedirectComponent to="/home" />
+      }
+    ]
+  },
+  {
+    path: '/geometry',
+    element: <PageLayout></PageLayout>,
+    children: [
+      {
+        path: 'vertices',
+        element: <LazyImportComponent lazyChildren={VerticesPage} />,
       }
     ]
   },

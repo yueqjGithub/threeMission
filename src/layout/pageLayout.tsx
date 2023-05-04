@@ -16,6 +16,7 @@ const PageLayout = () => {
   return (
     <div className="pageContainer flex-row flex-jst-btw flex-ali-center">
       <div className={`${styles.menuContainer} full-height`}>
+        <h3>入门</h3>
         <ul>
           <li><Link className="text-primary" to={'/home'}>HOME</Link></li>
           <li><Link className="text-primary" to={'/line'}>LINE</Link></li>
@@ -24,6 +25,10 @@ const PageLayout = () => {
           <li><Link className="text-primary" to={'/orbit'}>Orbit（各种辅助控件）</Link></li>
           <li><Link className="text-primary" to={'/stat'}>stat（渲染帧率查看）</Link></li>
           <li><Link className="text-primary" to={'/gui'}>GUI</Link></li>
+        </ul>
+        <h3>几何体</h3>
+        <ul>
+          <li><Link className="text-primary" to={'/geometry/vertices'}>顶点位置</Link></li>
         </ul>
       </div>
       <div className={`${styles.contentContainer} flex-1 full-height`}>
