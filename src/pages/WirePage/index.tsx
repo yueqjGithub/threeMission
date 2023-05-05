@@ -2,6 +2,7 @@ import dat from "dat.gui"
 import { useEffect, useRef } from "react"
 import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+import Stats from "three/examples/jsm/libs/stats.module"
 
 const WirePage = () => {
   const ref = useRef<HTMLDivElement>(null)
@@ -46,6 +47,9 @@ const WirePage = () => {
 
       // GUI
       const gui = new dat.GUI()
+      gui.domElement.style.position = 'absolute'
+      gui.domElement.style.right = '0px'
+      gui.domElement.style.top = '0px'
       const options = {
         wireframe: true,
         widthSegements: 10,
@@ -56,12 +60,13 @@ const WirePage = () => {
         render.render(sence, camera)
       }).name('线框模式')
       const folder = gui.addFolder('模型精细度')
+      // 这里属性搞到10000，可以感受到明显的卡顿，机子不行的要遭，莫怪我没提醒
       folder.add(options, 'widthSegements', 8, 100).onChange(val => {
         geometry = new THREE.SphereGeometry(50, val, options.heightSegements)
         mesh.geometry = geometry
         render.render(sence, camera)
       }).name('x')
-
+      // 这里属性搞到10000，可以感受到明显的卡顿，机子不行的要遭，莫怪我没提醒
       folder.add(options, 'heightSegements', 8, 100).onChange(val => {
         geometry = new THREE.SphereGeometry(50, options.widthSegements, val)
         mesh.geometry = geometry
@@ -74,7 +79,21 @@ const WirePage = () => {
         render.render(sence, camera)
       })
 
+      // FPS
+      const stat = Stats()
+      stat.domElement.style.position = 'absolute'
+      stat.domElement.style.left = '0px'
+      stat.domElement.style.top = '0px'
+      ref.current?.appendChild(stat.domElement)
+
+      const animate = () => {
+        stat.update()
+        requestAnimationFrame(animate)
+      }
+      animate()
+
       ref.current?.appendChild(render.domElement)
+      ref.current?.appendChild(gui.domElement)
       render.render(sence, camera)
 
       effectRef.current = true
