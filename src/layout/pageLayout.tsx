@@ -29,6 +29,8 @@ const PageLayout = () => {
         <h3>几何体</h3>
         <ul>
           <li><Link className="text-primary" to={'/geometry/vertices'}>顶点位置</Link></li>
+          <li><Link className="text-primary" to={'/geometry/meshpage'}>几何体</Link></li>
+          <li><Link className="text-primary" to={'/geometry/wire'}>几何体线框模式</Link></li>
         </ul>
       </div>
       <div className={`${styles.contentContainer} flex-1 full-height`}>

@@ -13,7 +13,7 @@ const Orbit = lazy(() => import('../pages/Orbit'))
 const Stat = lazy(() => import('../pages/Stat'))
 const GuiPage = lazy(() => import('../pages/GuiPage'))
 const VerticesPage = lazy(() => import('../pages/Vertices'))
-
+const MeshPage = lazy(() => import('../pages/MeshPage'))
 const RedirectComponent = (props: { to: string }) => {
   const navigate = useNavigate()
   useEffect(() => {
@@ -77,6 +77,14 @@ const routeList: RouteObject[] = [
       {
         path: 'vertices',
         element: <LazyImportComponent lazyChildren={VerticesPage} />,
+      },
+      {
+        path: 'meshpage',
+        element: <LazyImportComponent lazyChildren={lazy(() => import('../pages/MeshPage'))} />,
+      },
+      {
+        path: 'wire',
+        element: <LazyImportComponent lazyChildren={lazy(() => import('../pages/WirePage'))} />,
       }
     ]
   },
