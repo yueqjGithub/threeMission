@@ -89,6 +89,16 @@ const routeList: RouteObject[] = [
     ]
   },
   {
+    path: '/solarSystem',
+    element: <PageLayout></PageLayout>,
+    children: [
+      {
+        path: 'solar',
+        element: <LazyImportComponent lazyChildren={lazy(() => import('../pages/Solar'))} />,
+      }
+    ]
+  },
+  {
     path: '*',
     element: <>THIS IS 404 PAGE</>
   }

@@ -32,6 +32,10 @@ const PageLayout = () => {
           <li><Link className="text-primary" to={'/geometry/meshpage'}>几何体</Link></li>
           <li><Link className="text-primary" to={'/geometry/wire'}>几何体线框模式</Link></li>
         </ul>
+        <h3>层级模型</h3>
+        <ul>
+          <li><Link className="text-primary" to={'/solarSystem/solar'}>简陋的太阳系</Link></li>
+        </ul>
       </div>
       <div className={`${styles.contentContainer} flex-1 full-height`}>
         <div className={`${styles.contentOutlet} full-height scroll-bar`}>

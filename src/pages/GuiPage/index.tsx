@@ -14,8 +14,8 @@ const GuiPage = () => {
       const w = ref.current?.clientWidth || 0
       const h = ref.current?.clientHeight || 0
       const camera = new THREE.PerspectiveCamera(45, w / h, 1, 2000)
-      camera.position.set(0,0,700)
-      camera.lookAt(0,0,0)
+      camera.position.set(0, 0, 700)
+      camera.lookAt(0, 0, 0)
       const render = new THREE.WebGLRenderer({
         // 抗锯齿
         antialias: true
@@ -101,7 +101,7 @@ const GuiPage = () => {
         pointLight.intensity = v
         render.render(sence, camera)
       }).name('点光源强度')
-      power.addColor(obj, 'color').onChange(function(value){
+      power.addColor(obj, 'color').onChange(function (value) {
         mesh.material.color.set(value);
         render.render(sence, camera)
       }).name('材质颜色');
@@ -122,23 +122,23 @@ const GuiPage = () => {
   }, [])
   return (
     <div className="full-width full-height flex-col flex-jst-start flex-ali-start">
-    <div className='controlContainer flex-row flex-jst-btw flex-ali-center'>
-      <button onClick={() => {
-        // showStat ? ref.current?.removeChild(statObj.current.domElement) : ref.current?.appendChild(statObj.current.domElement)
-        if (showStat) {
-          ref.current?.removeChild(statObj.current.domElement)
-          setShowStat(false)
-        } else {
-          ref.current?.appendChild(statObj.current.domElement)
-          setShowStat(true)
-        }
-      }}>开启/关闭帧率显示</button>
-      <div className="text-error">
-        ambientLignt: 环境光 pointLight: 点光源
+      <div className='controlContainer flex-row flex-jst-btw flex-ali-center'>
+        <button onClick={() => {
+          // showStat ? ref.current?.removeChild(statObj.current.domElement) : ref.current?.appendChild(statObj.current.domElement)
+          if (showStat) {
+            ref.current?.removeChild(statObj.current.domElement)
+            setShowStat(false)
+          } else {
+            ref.current?.appendChild(statObj.current.domElement)
+            setShowStat(true)
+          }
+        }}>开启/关闭帧率显示</button>
+        <div className="text-error">
+          ambientLignt: 环境光 pointLight: 点光源
+        </div>
       </div>
+      <div className='full-width flex-1' ref={ref} style={{ position: 'relative' }}></div>
     </div>
-    <div className='full-width flex-1' ref={ref} style={{position: 'relative'}}></div>
-  </div>
   )
 }
 
